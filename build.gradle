@@ -194,6 +194,11 @@ repositories {
         name = "CurseForge"
         url = "https://minecraft.curseforge.com/api/maven"
     }
+
+    // Vampirism
+    maven { url = "https://maven.maxanier.de/releases" }
+
+    maven { url = "https://maven.paube.de/releases" }
 }
 
 dependencies {
@@ -206,9 +211,9 @@ dependencies {
 
     // Example mod dependency with JEI - using fg.deobf() ensures the dependency is remapped to your development mappings
     // The JEI API is declared for compile time use, while the full JEI artifact is used at runtime
-    // compileOnly fg.deobf("mezz.jei:jei-${mc_version}-common-api:${jei_version}")
-    // compileOnly fg.deobf("mezz.jei:jei-${mc_version}-forge-api:${jei_version}")
-    // runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}-forge:${jei_version}")
+//     compileOnly fg.deobf("mezz.jei:jei-${minecraft_version}-common-api:${jei_version}")
+//     compileOnly fg.deobf("mezz.jei:jei-${minecraft_version}-forge-api:${jei_version}")
+//     runtimeOnly fg.deobf("mezz.jei:jei-${minecraft_version}-forge:${jei_version}")
 
     // Example mod dependency using a mod jar from ./libs with a flat dir repository
     // This maps to ./libs/coolmod-${mc_version}-${coolmod_version}.jar
@@ -240,6 +245,18 @@ dependencies {
     implementation fg.deobf("curse.maven:citadel-331936:${citadel_fileID}")
     implementation fg.deobf("curse.maven:alexcaves-924854:${alexsCaves_fileID}")
     implementation fg.deobf("curse.maven:alltheleaks-1091339:${alltheleaks_fileID}")
+
+    compileOnly fg.deobf("de.teamlapen.vampirism:Vampirism:${minecraft_version}-${vampirism_version}:api")
+    runtimeOnly fg.deobf("de.teamlapen.vampirism:Vampirism:${minecraft_version}-${vampirism_version}")
+    implementation fg.deobf("de.maxanier.guideapi:Guide-API-VP:${minecraft_version}-${guideAPI_version}")
+//    This version doesn't exist in the maven repository yet
+//    implementation fg.deobf("de.teamlapen.vampirism_integrations:vampirism_integrations:${minecraft_version}-${vampirism_integrations_version}")
+    implementation fg.deobf("curse.maven:vampirism_integrations-282433:6857117")
+
+//    This requires jei for some reason
+//    implementation "de.teamlapen.werewolves:Werewolves:${minecraft_version}-${werewolves_version}:deobf"
+//    We use the CurseMaven version here instead because of that
+    implementation fg.deobf("curse.maven:werewolves-417851:${werewolves_fileID}")
 }
 
 // This block of code expands all declared replace properties in the specified resource targets.
