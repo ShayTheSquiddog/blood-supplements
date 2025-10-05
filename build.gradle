@@ -1,3 +1,5 @@
+//file:noinspection SpellCheckingInspection
+//file:noinspection VulnerableLibrariesLocal
 buildscript {
     repositories {
         // These repositories are only for Gradle plugins, put any other repositories in the repository block further below
@@ -148,7 +150,7 @@ repositories {
     // }
 
     flatDir {
-        dir 'run/mods'
+        dir 'libs'
     }
 
     maven {
@@ -167,6 +169,12 @@ repositories {
 
     // Patchouli
     maven { url 'https://maven.blamejared.com' }
+
+    // Modrinth exclusives
+    maven {
+        name = "Modrinth"
+        url = "https://api.modrinth.com/maven"
+    }
 
     // Kubejs
     maven {
@@ -257,6 +265,13 @@ dependencies {
 //    implementation "de.teamlapen.werewolves:Werewolves:${minecraft_version}-${werewolves_version}:deobf"
 //    We use the CurseMaven version here instead because of that
     implementation fg.deobf("curse.maven:werewolves-417851:${werewolves_fileID}")
+
+    implementation fg.deobf("curse.maven:selene-499980:7027387")
+    implementation fg.deobf("curse.maven:amendments-896746:7049560")
+    implementation fg.deobf("curse.maven:supplementaries-412082:7054158")
+
+    implementation fg.deobf("curse.maven:integrated-api-817709:6369317")
+    implementation fg.deobf("curse.maven:integrated-villages-661376:6701488")
 }
 
 // This block of code expands all declared replace properties in the specified resource targets.
