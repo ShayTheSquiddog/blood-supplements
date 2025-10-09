@@ -217,6 +217,9 @@ repositories {
         name = 'Kotlin for Forge'
         url = 'https://thedarkcolour.github.io/KotlinForForge/'
     }
+
+    // Balm
+    maven { url = "https://maven.twelveiterations.com/repository/maven-public/" }
 }
 
 dependencies {
@@ -266,7 +269,7 @@ dependencies {
     implementation fg.deobf("curse.maven:alltheleaks-1091339:${alltheleaks_fileID}")
 
     compileOnly fg.deobf("de.teamlapen.vampirism:Vampirism:${minecraft_version}-${vampirism_version}:api")
-    runtimeOnly fg.deobf("de.teamlapen.vampirism:Vampirism:${minecraft_version}-${vampirism_version}")
+    implementation fg.deobf("de.teamlapen.vampirism:Vampirism:${minecraft_version}-${vampirism_version}")
     implementation fg.deobf("de.maxanier.guideapi:Guide-API-VP:${minecraft_version}-${guideAPI_version}")
 //    This version doesn't exist in the maven repository yet
 //    implementation fg.deobf("de.teamlapen.vampirism_integrations:vampirism_integrations:${minecraft_version}-${vampirism_integrations_version}")
@@ -285,6 +288,11 @@ dependencies {
     implementation fg.deobf("curse.maven:integrated-villages-661376:6701488")
 
     implementation fg.deobf("curse.maven:rats-323596:5904296")
+//    implementation fg.deobf("curse.maven:quark-243121:6427817")
+//    implementation fg.deobf("maven.modrinth:jade:${jade_version}+forge")
+    implementation fg.deobf("net.blay09.mods:balm-forge:${balm_version}+${minecraft_version}") {
+        changing = balm_version.endsWith("SNAPSHOT")
+    }
 }
 
 // This block of code expands all declared replace properties in the specified resource targets.
